@@ -1,0 +1,67 @@
+a {
+  text-decoration: none;
+  color: #FFAA33;
+}
+
+a:hover {
+  color: #ADD8E6; /* slightly lighter orange */
+}
+
+/* Global HR Style */
+hr {
+    width: 100%;          /* Default to 90% of container width */
+    height: clamp(3px, 0.5vw, 10px); /* Responsive height */
+        /* Thickness */
+    border: none;        /* Remove default border */
+  }
+
+  .join-wrapper{ 
+    display: grid;
+    justify-content: center;
+    width: 90vw;
+    margin: 0 auto;
+    gap: 1rem;
+    padding-inline: clamp(12px,4vw,32px);
+    max-width: 1200px;
+}
+
+/* child wrappers */
+.section-wrapper{ 
+    display: grid;
+    /* justify-items: center; */
+    justify-self: center;
+    align-self: center;
+    width: 90%;
+    /* max-width: 70ch;  */
+}
+
+
+.section-wrapper name{
+    margin: 0 0 .75rem;
+    font-size: clamp(1rem, 3vw, 2rem);
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
+  .section-wrapper p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: clamp(.75rem, 2vw, 1rem);
+    text-wrap: balance;
+    text-align :left;
+  }
+
+  .section-wrapper ul{
+    display:grid;
+    /* list-style-type: none; */
+    /* padding: 0rem */
+    gap: 10px;
+    margin: 10px auto;
+    font-size: clamp(.75rem, 2vw, 1rem);
+  }
+
+/* @media(max-width:900px){
+  .section-wrapper name { 
+    text-align: center;
+  }
+} */

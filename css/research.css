@@ -1,0 +1,99 @@
+a {
+  text-decoration: none;
+  color: #FFAA33;
+}
+
+a:hover {
+  color: #ADD8E6; /* slightly lighter orange */
+}
+
+/* Global HR Style */
+hr {
+    width: 100%;          /* Default to 90% of container width */
+    height: clamp(3px, 0.5vw, 10px); /* Responsive height */
+    border: none;        /* Remove default border */
+}
+
+.research-wrapper{ 
+    display: grid;
+    grid-template-columns: 1fr; /* one column */ 
+    gap: 1.25rem;
+    align-items: start;
+    justify-content: center;
+    width: 90vw;
+    margin: 0 auto;
+    gap: 2rem;
+    padding-inline: clamp(12px,4vw,32px);
+}
+
+.row-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }  
+
+/* Ensure long text doesn’t overflow */
+.row-text { 
+    min-width: 0; 
+    align-self: start;    
+    width: 100%;
+    
+}
+.row-text p { 
+    max-width: min(70ch, 100%); 
+    /* margin: 0 auto;  */
+    text-align: left;
+    line-height: 1.2;
+    font-size: clamp(.75rem, 2vw, 1rem);
+    word-break: normal;  
+    text-wrap: balance; 
+    padding-inline: clamp(8px, 4vw, 24px);
+}
+
+.row-text ul{
+    line-height: 1.2;
+    font-size: clamp(.75rem, 2vw, 1rem);
+    word-break: normal;  
+    text-wrap: balance; 
+    /* margin: 10px auto; */
+}
+
+.row-text h1 {
+    object-fit: contain;
+    text-align: center;
+    margin-top: 0;
+    font-size: clamp(2rem, 2vw, 4rem);
+    text-transform: uppercase; 
+    word-break: normal;                  
+    text-wrap: balance;    
+}
+
+/* Responsive image that doesn’t blow up */
+.row-image {
+    display: grid;               /* lets us use place-self */
+    justify-self: end;  /* center horizontally in grid cell */
+    align-self: start;    /* center vertically in grid cell */
+    width: 100%;
+}
+
+.row-image img {
+    width: 100%;                 /* fill its column */
+      /* cap size on large screens */
+    height: auto;                /* keep aspect ratio */     
+    display: block;
+  }
+  
+  /* Stack on small screens (text above image) */
+  @media (max-width: 900px) {
+    .row-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .row-text h1{
+      text-align: left;
+    }
+    .row-image img {
+      place-self: start center;  /* center image when stacked */
+    }
+  }

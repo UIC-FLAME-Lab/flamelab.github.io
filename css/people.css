@@ -1,0 +1,122 @@
+a {
+    text-decoration: none;
+    color: #FFAA33; 
+}
+
+/* Global HR Style */
+hr {
+    width: 100%;          /* Default to 90% of container width */
+    height: clamp(3px, 0.5vw, 10px); /* Responsive height */
+    border: none;        /* Remove default border */
+}
+
+/* parent wrapper */
+.people-wrapper{
+    display: grid;
+    width: 90vw;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 2rem;
+    padding-inline: clamp(12px,4vw,32px);
+}
+
+.section-label{
+    /* width: 70ch; */
+    display: grid;
+}
+
+.section-label label{
+    text-align: center;
+    font-size: clamp(1rem, 6vw, 2rem);
+    letter-spacing: clamp(.5rem, 0.6vw, 1rem); /* scale spacing; no per-letter stacking */
+    /* line-height: 1.5; */
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+/* child wrappers */
+.person{ 
+    display: grid;
+    grid-template-rows: auto 1fr;
+    justify-items: center;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    /* max-width: 70ch;  */
+}
+
+/* Picture */
+.person img{
+    /* width: 100%; */
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.person-text {
+    text-align: center;
+    padding: 1rem 1.25rem;
+    margin: 0 auto;
+    font-size: clamp(.75rem, 3vw, 1rem);
+}
+
+.person-name {
+    margin: 0 0 .75rem;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-weight: bold;
+    text-align: center;
+    justify-self: center;
+    margin: 0 auto;
+  }
+/*   
+  .person-bio {
+    margin: 0;
+    line-height: 1.5;
+    font-size: clamp(.75rem, 2vw, 1rem);
+    text-wrap: balance;
+  } */
+
+  /* main RA container */
+    .ra-container {
+        display: grid;
+        /* grid-template-rows: 1fr; */
+        /* justify-items: center; */
+        justify-self: center;
+        /* align-self: center; */
+        width: fit-content;
+
+        width: 100%;
+        padding: 1rem 1.25rem;
+        /* margin: 0 auto; */
+        /* background-color: #FFAA33; */
+    }
+
+    .ra-container ul{
+        text-align: center;
+        margin: 0;
+        padding: 0;     /* removes the left indent */
+        list-style: none;
+        /* text-align: left; */
+      }
+
+    /* Names of RA */
+    .ra-container li{
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: bold;
+        margin: 0 auto;
+        /* list-style: none; */
+    }
+
+    .ra-container p{
+        font-size: clamp(.75rem, 3vw, 1rem);
+    }
+
+
+    @media(max-width: 900px){
+        .person{ 
+    grid-template-columns: 1fr;
+}
+
+
+    }

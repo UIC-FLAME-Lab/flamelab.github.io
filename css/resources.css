@@ -1,0 +1,75 @@
+a {
+    text-decoration: none;
+    color: #FFAA33;
+}
+
+a:hover {
+    color: #ADD8E6; /* slightly lighter orange */
+}
+
+/* Global HR Style */
+hr {
+    width: 100%;          /* Default to 90% of container width */
+    height: clamp(3px, 0.5vw, 10px); /* Responsive height */
+        /* Thickness */
+    border: none;        /* Remove default border */
+  }
+
+  .resources-wrapper{ 
+    display: grid;
+    justify-content: center;
+    width: 90vw;
+    margin: 0 auto;
+    gap: 1rem;
+    padding-inline: clamp(12px,4vw,32px);
+    max-width: 1200px;
+}
+
+.resources-wrapper name{
+    margin: 0 0 .75rem;
+    font-size: clamp(1rem, 3vw, 2rem);
+    font-weight: bold;
+    margin-top: 1rem;
+    align-self: center;
+    justify-self: center;
+    width: 90%
+  }
+
+.vid-txt-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;     /* vertical center */
+    justify-items: center;   
+    width: 90%;
+    margin: 0 auto;          /* center whole row on page */
+}
+
+/* Embedd youtube video */
+.vid-txt-row iframe {
+    display: block;          /* required for margin auto */
+    margin: 0 auto;  
+    /* width: 100%;                take full width of parent */
+    aspect-ratio: 16 / 9;        /* keep correct video proportion */
+    height: auto;       
+    max-width: 560px;         /* auto-adjust height */
+    width:100%;
+    border: none;                /* optional: remove border */
+}
+
+.vid-txt-row p { 
+    max-width: min(70ch, 100%); 
+    /* margin: 0 auto;  */
+    margin: 0;
+    line-height: 1.5;
+    font-size: clamp(.75rem, 2vw, 1.25rem);
+    text-wrap: balance;
+    text-align :left;
+}
+
+@media(max-width:900px){
+    .vid-txt-row{
+        grid-template-columns: 1fr;
+    }
+}
+

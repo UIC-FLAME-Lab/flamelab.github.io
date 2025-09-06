@@ -1,0 +1,120 @@
+a {
+    text-decoration: none;
+    color: #FFAA33;
+}
+
+a:hover {
+    color: #ADD8E6; /* slightly lighter orange */
+}
+/* Global HR Style */
+hr {
+    width: 100%;          /* Default to 90% of container width */
+    height: clamp(3px, 0.5vw, 10px); /* Responsive height */
+        /* Thickness */
+    border: none;        /* Remove default border */
+  }
+
+
+/* Home Page */
+.home{ 
+    display: grid;
+    justify-content: center;
+    width: 90vw;
+    margin: 0 auto;
+    gap: 1rem;
+    padding-inline: clamp(12px,4vw,32px);
+    max-width: 1200px;
+}
+
+/* Container for Image */
+.home-box1 {    
+    grid-row: 1;
+    justify-self: center;  /* center horizontally in grid cell */
+    align-self: center;    /* center vertically in grid cell */
+}
+
+/* Image Properties  */
+.home-box1 img{
+    max-width: 100%;
+    object-fit: contain;
+    margin-top: 3%;
+}
+
+/* Container for Welcome */
+.home-box2 {    
+    grid-row: 2;
+    justify-self: center;  /* center horizontally in grid cell */
+    align-self: center;    /* center vertically in grid cell */
+    width: 100%;
+}
+
+/* container for welcome text */
+.home-box2 h1{
+    margin: 0 auto;
+    object-fit: contain;
+    /* max-width: 100%; */
+    text-align: center;
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: clamp(.75rem, 0.6vw, 1.5rem); /* scale spacing; no per-letter stacking */
+    line-height: 1.5;
+    text-transform: uppercase; 
+    /* Wrapping helpers so long words don’t blow layout */
+    word-break: normal;                  /* prefer normal breaks */
+    text-wrap: balance;                  /* nicer multi-line titles (supported in modern browsers) */
+}
+
+/* Blue Line */
+.home-box2 hr {
+    height: 10px;
+    background-color: #ADD8E6;
+  }
+
+/* Text for home page  */
+.home-box3 {
+    grid-row: 3;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+}
+/* Fomart paragraph */
+.home-box3 p {
+    max-width: min(70ch, 100%); 
+    margin: 0 auto; 
+    /* max-width: 100%; */
+    text-align: center;
+    line-height: 1.5;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    word-break: normal;  
+    text-wrap: balance; 
+    padding-inline: clamp(8px, 4vw, 24px);
+}
+
+/* Footer  */
+.home-box4 {
+    grid-row: 4;
+    justify-self: center;  /* center horizontally in grid cell */
+    align-self: center;    /* center vertically in grid cell */
+    width: 100%;
+}
+
+/* Black Line Footer */
+.home-box4 hr {
+    height: 5px;
+    background-color: #000000;
+  }
+
+.home-box4 p{
+    background-color: #FFFFFF;
+    padding: 10px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    text-align: center;
+    color: #000000;
+}
+
+
+/* Small screens: make HR slightly thicker for visibility */
+@media (max-width: 600px) {
+    hr {
+      height: clamp(4px, 1vw, 12px);
+    }
+}

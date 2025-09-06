@@ -1,0 +1,38 @@
+a {
+    text-decoration: none;
+    color: #FFAA33;
+}
+
+a:hover {
+    color: #ADD8E6; /* slightly lighter orange */
+}
+/* Global HR Style */
+hr {
+    width: 100%;          /* Default to 90% of container width */
+    height: clamp(3px, 0.5vw, 10px); /* Responsive height */
+    border: none;        /* Remove default border */
+}
+
+.pub-wrapper{ 
+    display: grid;
+    width: 90vw;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 2rem;
+    padding-inline: clamp(12px,4vw,32px);
+
+}
+
+.list-wrapper {
+    display: grid;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.list-wrapper p{
+    margin: 0;
+    padding: 0;     /* removes the left indent */
+    font-size: clamp(.75rem, 3vw, 1rem);
+}
+
+

@@ -1,0 +1,27 @@
+
+.facebook-link {
+    color: #1877F2;   /* Facebook blue */
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.instagram-link {
+    color: #E4405F;   /* Instagram pink/red */
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.facebook-link i,
+.instagram-link i {
+    margin-right: 6px; /* space between icon and text */
+}
+
+.facebook-link:hover {
+    color: #145db2;
+    /* text-decoration: underline; */
+}
+
+.instagram-link:hover {
+    color: #c13584;  /* darker Instagram magenta */
+    /* text-decoration: underline; */
+}

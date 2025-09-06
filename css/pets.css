@@ -1,0 +1,69 @@
+a {
+    text-decoration: none;
+    color: #FFAA33;
+}
+
+a:hover {
+    color: #ADD8E6; /* slightly lighter orange */
+}
+
+/* Global HR Style */
+hr {
+    width: 100%;          /* Default to 90% of container width */
+    height: clamp(3px, 0.5vw, 10px); /* Responsive height */
+    border: none;        /* Remove default border */
+}
+
+.pet-wrapper {
+    display:grid;
+    grid-template-columns: 1fr;
+    width: 90vw;
+    gap: 2rem;
+    padding-inline: clamp(12px,4vw,32px);
+    justify-items: center;
+}
+
+.pet-row { 
+    display: grid; 
+    grid-template-columns: 1fr auto;
+    gap: 5rem;
+    justify-content: center;
+    justify-self: center;
+    margin: 0 auto;
+}
+
+/* Name of Pet */
+.pet-row name{ 
+    margin: 0 0 .75rem;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: bold;
+    text-align: center;
+    /* margin:0 auto */
+}
+
+/* Summary Text Under Pets */
+.pet-row txt{ 
+    margin: 0 0 .75rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    text-align: center;
+}
+
+.pair-img-txt {
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.pair-img-txt img{
+    width: 100%;
+    max-width: 500px;
+    align-self: center;
+    justify-self: center;
+    margin: 0 auto
+    /* height: 250px; */
+}
+
+@media(max-width:900px){
+    .pet-row{
+        grid-template-columns: 1fr;
+    }
+}

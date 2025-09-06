@@ -1,0 +1,299 @@
+/* Using the Inter font (google) */
+/* Apply to the entire document */
+:root {
+    font-family: Inter, sans-serif; /* Set default font family to Inter */
+    font-feature-settings: 'liga' 1, 'calt' 1; /* Enable font ligatures and contextual alternates */
+  }
+  
+  /* For variable font support (recommended for modern browsers) */
+  @supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif; /* Use variable font if supported */
+  }
+  }
+  
+  body.menu-open{ 
+    overflow: hidden; 
+}
+
+  .navbar {
+    position: relative; /* Needed for absolutely positioned children (hamburger menu) */
+    display: flex; /* Layout navbar items in a row */
+    justify-content: flex-start; /* Align items to the left */
+    
+    overflow: visible; /* Allow dropdowns to overflow */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .nav-left {
+      margin-right: auto; /* Push right-side items to the far right */
+    }
+
+  
+  .nav-left img {
+      height: 75px; /* Set logo height */
+      /* width: auto; Maintain logo aspect ratio */
+      padding-top: 5px;
+      display: inline-block; /* Remove bottom whitespace on images */
+      margin-left: 0px; /* Add left spacing from screen edge */
+      align-self: left; 
+    }
+
+    /* Don't apply hover to image link */
+    .navbar a img {
+        pointer-events: none; /* ignores hover effects on image */
+    }
+    .navbar a.logo-link:hover {
+        background-color: transparent;
+    }
+  
+  .nav-right {
+      display: flex; /* Arrange right-side nav items horizontally */
+      align-items: center; /* Vertically center nav items */
+      flex-wrap: nowrap;
+  }  
+  
+  .navbar a {
+    line-height: 56px; 
+    display: block; /* Make link clickable across its whole area */
+    color: black; /* Link text color */
+    text-align: center; /* Center link text */
+    padding: 0px 16px; /* Add spacing inside links */
+    text-decoration: none; /* Remove underline */
+    font-size: 17px; /* Set link font size */
+  }
+  
+  .navbar a:hover {
+    color: #F7B75F; /* Highlight link background on hover */
+  }
+  
+  /* If I want Home to always be displayed */
+  /* .navbar a.active {
+    background-color: #F7B75F;
+  } */ /* Styles for a selected/active link (currently commented out) */
+  
+  .navbar .icon {
+    display: none; /* Hide hamburger menu icon by default (desktop) */
+  }
+  
+  /* Create Dropdown for further list categories */
+  .dropdown {
+    position: relative; /* Parent for absolutely positioned menu */
+    overflow: visible; /* Show menu outside parent bounds */
+    display: inline-flex; /* Keep trigger button inline with others */
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px; /* Trigger text size */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    color: black; /* Trigger text color */
+    background-color: inherit; /* Match navbar background */
+    font-family: inherit; /* Keep consistent font */
+    margin: 0; /* Remove margin */
+    
+    position: relative; /* Needed for caret positioning */
+    /* padding-right: 20px; Add space for caret icon */
+  }
+
+  .navbar a,
+  .dropdown .dropbtn {
+    white-space: nowrap;         /* don't break words like 'Join Us!' */
+    flex-shrink: 0;              /* don't let links shrink narrower than their text */
+    /* optional: keep natural width for safety */
+    min-width: max-content;
+  }
+  
+  .dropdown .dropbtn::after {
+      content: "▾"; /* Caret arrow character */
+      position: relative;
+      margin-left: 10px;  
+      transform: translateY(-50%); /* Perfect centering */
+      font-size: 0.8em; /* Slightly smaller than text */
+      pointer-events: none; /* Arrow doesn’t block clicks */
+    }
+  
+  .dropdown:hover .dropbtn { 
+    color: #F7B75F;; /* Highlight trigger on hover */
+  }
+  
+  .dropbdown:hover .dropdown-content { /* NOTE: 'dropbdown' is likely a typo */
+    display: block; /* Show dropdown menu on hover */
+  }
+  
+  .dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute; /* Positioned relative to trigger */
+    top: 100%; /* Directly below trigger */
+    left: 50%; /* Start at middle */
+    transform: translateX(-50%); /* Center horizontally */
+    min-width: 160px; /* Minimum width */
+    background: white; /* Menu background */
+    box-shadow: 0 8px 16px rgba(0,0,0,.2); /* Shadow for depth */
+    z-index: 10000; /* Keep above other content */
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none; /* Reset float */
+    color: black; /* Link color */
+    padding: 0px 16px; /* Spacing for menu items */
+    text-decoration: none; /* No underline */
+    display: block; /* Full width clickable */
+    text-align: center; /* Center text in menu */
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    color: #F7B75F;; /* Highlight submenu item */
+    }
+    
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+      display: block; /* Show submenu when hovering parent */
+    }
+  
+  /* FOR MOBILE SCREENS */
+  /* Hamburger Menu  */
+    @media (max-width: 1000px) { /* Styles apply to screens ≤900px wide */
+      .nav-right > a,
+      .nav-right > .dropdown { display: none; } /* Hide nav links initially */
+  
+      .navbar .icon {
+        display: block; /* Show hamburger */
+        position: absolute; /* Pin to top right */
+        right: 0;
+        top: 0;
+        z-index: 11000; /* Keep above dropdowns */
+        cursor: pointer; /* Show clickable cursor */
+      }
+    
+      .navbar.responsive {
+        flex-direction: column; /* Stack items vertically */
+        align-items: stretch; /* Full width items */
+      }
+    
+      .navbar.responsive .nav-right {
+        flex-direction: column; /* Stack nav links */
+        align-items: stretch; /* Full width */
+        width: 100%;
+      }
+    
+      .navbar.responsive .nav-right > a,
+      .navbar.responsive .nav-right > .dropdown {
+        display: block; /* Show links in expanded menu */
+      }
+    }
+  
+  /* Carrot Responsive Drop-Down */
+  /* --- Mobile accordion behavior --- */
+  @media (max-width: 1000px) {
+      /* Stack menu items */
+      .navbar.responsive { 
+          flex-direction: column; /* Stack vertically */
+          align-items: stretch; /* Stretch full width */
+      }
+      .navbar.responsive .nav-right {
+        display: block;
+        position: fixed;        /* sits on top of page content */
+        inset: 0;               /* cover full viewport */
+        padding-top: 56px;      /* leave space for top bar */
+        background: rgba(173, 216, 230, 0.9); ;
+        backdrop-filter: blur(2px); /* optional: nice blur behind */    
+        z-index: 11000;
+        overflow-y: auto;       /* scroll if needed */
+      }
+      /* Show top-level items */
+      .navbar.responsive .nav-right > a,
+      .navbar.responsive .nav-right > .dropdown {
+        display: block;
+        text-align: center;
+        /* padding: 14px 16px; */
+      }
+    
+      /* Make dropdown act like an accordion section */
+      /* .navbar.responsive .dropdown { position: relative; display: block; } */ /* Optional alternative layout */
+      .navbar.responsive .dropbtn {
+          text-align: right; /* Align text right (overwritten later) */
+          display: block; /* Make full-width clickable */
+          justify-content: center; /* Attempt to center text if flex applied */
+          gap: 12px; /* Space between text and caret */
+      }
+  
+      .navbar.responsive .dropbtn {
+          display: flex; /* Flexbox for horizontal alignment */
+          justify-content: center;  /* Center contents horizontally */
+          align-items: center; /* Center vertically */
+          gap: 12px; /* Space between label and caret */
+          background: transparent; /* No background by default */
+          cursor: pointer; /* Pointer cursor on hover/tap */
+          text-align: center; /* Ensure text centers if fallback triggers */
+        }
+    
+        /* caret */
+      .navbar.responsive .dropbtn::after {
+          content: "▾"; /* Down arrow */
+          font-size: inherit; /* Match button text size */
+          transition: transform .2s ease; /* Smooth rotation */
+      }
+  
+      .navbar.responsive .dropdown.open .dropbtn::after {
+          transform: rotate(180deg); /* Flip caret when open */
+      }
+  
+      /* The panel */
+      .navbar.responsive .dropdown-content {
+        position: static; /* Place under trigger */
+        transform: none; /* Remove horizontal centering */
+        display: none; /* Hidden by default */
+        box-shadow: none; /* Remove shadow in mobile */
+        background: transparent; /* No background */
+        /* padding-bottom: 6px; Space below menu */
+      }
+  
+      .navbar.responsive .dropdown.open .dropdown-content {
+        display: block; /* Show when parent is open */
+      }
+    
+      /* Sub-links look like a simple list */
+      .navbar.responsive .dropdown-content a {
+        /* padding: 10px 16px; Menu item padding */
+        text-align: center; /* Center submenu text */
+      }
+    }
+    
+  /* Mobile override: keep caret next to centered text */
+  @media (max-width: 1000px) {
+      .navbar.responsive .nav-right > .dropdown > .dropbtn {
+        position: static; /* Remove relative positioning */
+        padding-right: 0; /* Remove right padding */
+        display: flex; /* Use flexbox for text/caret */
+        justify-content: center; /* Center contents horizontally */
+        align-items: center; /* Center vertically */
+        gap: 8px; /* Space between label and caret */
+        text-align: center; /* Ensure text is centered */
+      }
+    
+      .navbar.responsive .nav-right > .dropdown > .dropbtn::after {
+        position: static; /* Inline caret placement */
+        transform: none; /* Remove rotation offset */
+        font-size: 0.9em; /* Slightly smaller caret */
+      }
+    
+      /* rotate when open */
+      .navbar.responsive .dropdown.open > .dropbtn::after {
+        transform: rotate(180deg); /* Flip caret when open */
+      }
+
+      .navbar.responsive .nav-right > .dropdown:hover .dropdown-content {
+        display: block; /* Show dropdown */
+      }
+
+      .navbar.responsive .nav-right > .dropdown:hover > .dropbtn::after {
+        transform: rotate(180deg);
+      }
+
+    }
+
+
+  
