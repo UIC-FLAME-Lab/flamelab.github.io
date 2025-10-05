@@ -49,13 +49,13 @@ hr {
 .person img{
     /* width: 100%; */
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     height: auto;
     margin: 0 auto;
 }
 
 .person-text {
-    max-width: 70%;
+    max-width: 60%;
     text-align: center;
     padding: 1rem 1.25rem;
     margin: 0 auto;
