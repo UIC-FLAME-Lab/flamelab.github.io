@@ -28,10 +28,11 @@ hr {
 
 /* child wrappers */
 .section-wrapper{ 
+
     display: grid;
     justify-self: center;
     align-self: center;
-    width: 90%;
+    width: 80%;
 }
 
 .section-wrapper ul li {
@@ -47,8 +48,8 @@ hr {
     line-height: 1.2;
     font-size: clamp(.75rem, 2vw, 1rem);
     word-break: normal;  
-    text-wrap: balance; 
-    padding-inline: clamp(8px, 4vw, 24px);
+    /* text-wrap: balance;  */
+    /* padding-inline: clamp(8px, 4vw, 24px); */
     /* margin: 0 auto; */
     margin-bottom: 0;
 }
@@ -63,7 +64,7 @@ hr {
   .section-wrapper question{
     /* margin: 0 0 .75rem; */
     font-size: clamp(1rem, 3vw, 1.5rem);
-    padding-inline: clamp(8px, 4vw, 24px);
+    /* padding-inline: clamp(8px, 4vw, 24px); */
     font-weight: bold;
     color:#FFAA33;
     margin-top: 1rem;
