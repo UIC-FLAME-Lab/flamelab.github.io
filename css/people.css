@@ -3,6 +3,16 @@ a {
     color: #FFAA33; 
 }
 
+/* Prevent horizontal overflow and ensure predictable sizing */
+html, body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 /* Global HR Style */
 hr {
     width: 100%;          /* Default to 90% of container width */
@@ -13,11 +23,12 @@ hr {
 /* parent wrapper */
 .people-wrapper{
     display: grid;
-    width: 90vw;
+    width: 100%;
+    max-width: 1100px; /* constrain content to make larger page margins */
     justify-content: center;
     margin: 0 auto;
     gap: 2rem;
-    padding-inline: clamp(12px,4vw,32px);
+    padding-inline: clamp(1rem, 4vw, 3rem); /* outer page padding */
 }
 
 .section-label{
@@ -35,41 +46,62 @@ hr {
 }
 
 /* child wrappers */
-.person{ 
+    .person{ 
     display: grid;
-    grid-template-rows: auto 1fr;
-    justify-items: center;
+    grid-template-columns: auto 1fr; /* image left, content right */
+    grid-template-rows: auto; /* single auto row: image height will set row height */
+    justify-items: start;
     justify-self: center;
-    align-self: center;
+    align-items: start; /* align columns to the top so name lines up with image */
+    align-content: start; /* ensure grid content starts at the top */
     width: 100%;
+    box-sizing: border-box; /* ensure padding doesn't increase width */
+    padding-inline: clamp(1.25rem, 5vw, 4rem); /* slightly reduced left/right spacing so content uses more width */
     /* max-width: 70ch;  */
 }
 
 /* Picture */
 .person img{
-    /* width: 100%; */
     width: 100%;
-    max-width: 500px;
+    max-width: 360px; /* increased image width */
+    aspect-ratio: 1 / 1; /* force square crop */
+    width: 100%;
     height: auto;
-    margin: 0 auto;
+    margin: 0;
+    display: block; /* avoid inline-gap overflow */
+    grid-column: 1;
+    grid-row: 1; /* occupy the first row */
+    align-self: start; /* ensure image aligns to top */
+    object-fit: cover; /* crop to fill square */
 }
 
 .person-text {
-    max-width: 60%;
-    text-align: center;
-    padding: 1rem 1.25rem;
-    margin: 0 auto;
-    font-size: clamp(.75rem, 3vw, 1rem);
+    max-width: 100%;
+    text-align: left;
+    padding: 0 1.25rem 1rem 1.25rem; /* remove top padding so name aligns with image top */
+    margin: 0;
+    font-size: clamp(.85rem, 2.6vw, 1rem);
+    grid-column: 2;
+    grid-row: 1; /* share the same row as the image so content starts at the top */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: start; /* align text to top of the image */
+    overflow-wrap: anywhere; /* break long words/URLs to avoid horizontal scroll */
 }
 
 .person-name {
-    margin: 0 0 .75rem;
-    font-size: clamp(1rem, 3vw, 1.25rem);
-    font-weight: bold;
-    text-align: center;
-    justify-self: center;
-    margin: 0 auto;
-  }
+    margin: 0 0 .5rem;
+        font-size: clamp(1rem, 3vw, 1.25rem);
+        font-weight: bold;
+        text-align: left;
+        justify-self: start;
+        margin: 0;
+        align-self: flex-start !important; /* force top alignment */
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        /* no grid placement here — name is inside .person-text */
+    }
 /*   
   .person-bio {
     margin: 0;
@@ -83,12 +115,14 @@ hr {
         display: grid;
         /* grid-template-rows: 1fr; */
         /* justify-items: center; */
-        justify-self: center;
+        justify-self: left;
         /* align-self: center; */
         width: fit-content;
 
         width: 60%;
-        padding: 1rem 1.25rem;
+        box-sizing: border-box; /* match .person to keep padding inside width */
+        padding-inline: clamp(1.25rem, 5vw, 4rem); /* reduced to match .person */
+        padding-block: 1rem; /* preserve original vertical padding */
         /* margin: 0 auto; */
         /* background-color: #FFAA33; */
     }
@@ -100,6 +134,12 @@ hr {
         list-style: none;
         /* text-align: left; */
       }
+
+    /* ensure RA content doesn't overflow */
+    .ra-container, .ra-container ul, .ra-container p {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
 
     /* Names of RA */
     .ra-container li{
@@ -116,13 +156,51 @@ hr {
 
     @media(max-width: 900px){
         .person{ 
-    grid-template-columns: 1fr;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+            justify-items: center;
+            align-items: start;
+            padding-inline: clamp(0.9rem, 8vw, 2rem); /* slightly reduced mobile side margins */
+        }
 
-    .ra-container {
-        width: 100%;
-        padding: 0 auto;
+        .person img{
+            grid-column: 1;
+            grid-row: 1;
+            max-width: min(360px, 85%); /* cap image size on narrow screens */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .person-name{
+            grid-column: 1;
+            grid-row: 2;
+            text-align: center;
+        }
+
+        .person-text{
+            grid-column: 1;
+            grid-row: 3;
+            text-align: left;
+            padding-inline: 0.5rem; /* reduce inner padding so text column remains tight */
+        }
+
+        .ra-container {
+            width: 100%;
+            padding-inline: clamp(0.9rem, 8vw, 2rem); /* slightly reduced mobile side margins */
+            padding-block: 0;
+        }
     }
+
+/* Strong overrides to ensure name sits at the top of the image column */
+.person {
+    align-items: start; /* ensure columns align to top */
 }
-
-
-    }
+.person-text {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+.person-text > .person-name {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    align-self: flex-start !important;
+}

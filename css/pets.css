@@ -35,31 +35,55 @@ hr {
 /* Name of Pet */
 .pet-row name{ 
     margin: 0 0 .75rem;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1.25rem, 3vw, 2rem);
     font-weight: bold;
-    text-align: center;
+    text-align: left;
     /* margin:0 auto */
 }
 
 /* Summary Text Under Pets */
 .pet-row txt{ 
     margin: 0 0 .75rem;
-    font-size: clamp(1rem, 2vw, 1.5rem);
-    text-align: center;
+    font-size: clamp(.5rem, 2vw, 1rem);
+    text-align: left;
 }
 
 .pair-img-txt {
-    display: grid;
-    grid-template-rows: 1fr auto;
+    display: flex;
+    flex-direction: column; /* image above text */
+    align-items: flex-start; /* left-align image and text */
+    gap: 0.5rem;
 }
 
 .pair-img-txt img{
     width: 100%;
-    max-width: 500px;
-    align-self: center;
-    justify-self: center;
-    margin: 0 auto
+    max-width: 300px;
+    height: auto;
+    margin: 0 0 .25rem 0; /* small gap below image */
+    align-self: stretch;
     /* height: 250px; */
+}
+
+/* ensure custom tags behave like blocks and left-align */
+.pair-img-txt name,
+.pair-img-txt txt {
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+/* Constrain the pair container to the image width and enable wrapping */
+.pair-img-txt {
+    box-sizing: border-box;
+    max-width: 300px; /* match image max-width */
+    width: 100%;
+}
+
+.pair-img-txt name,
+.pair-img-txt txt {
+    white-space: normal;
+    overflow-wrap: anywhere; /* allow breaks on long words */
+    word-break: break-word;
 }
 
 @media(max-width:900px){

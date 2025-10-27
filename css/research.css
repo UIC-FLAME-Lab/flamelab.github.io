@@ -27,10 +27,10 @@ hr {
 }
 
 .row-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center; /* vertically center text and image */
   }  
 
 /* Ensure long text doesn’t overflow */
@@ -41,19 +41,18 @@ hr {
     
 }
 .row-text p { 
-    max-width: min(70ch, 100%); 
-    /* margin: 0 auto;  */
-    text-align: left;
-    line-height: 1.2;
-    font-size: clamp(.75rem, 2vw, 1rem);
-    word-break: normal;  
-    text-wrap: balance; 
-    padding-inline: clamp(8px, 4vw, 24px);
+  max-width: min(70ch, 100%);
+  text-align: left;
+  line-height: 1.5; /* improve readability */
+  font-size: clamp(.95rem, 1.6vw, 1.05rem); /* slightly larger, responsive */
+  word-break: normal;
+  text-wrap: balance;
+  padding-inline: clamp(8px, 4vw, 24px);
 }
 
 .row-text ul{
-    line-height: 1.2;
-    font-size: clamp(.75rem, 2vw, 1rem);
+  line-height: 1.45;
+  font-size: clamp(.95rem, 1.6vw, 1.05rem);
     word-break: normal;  
     text-wrap: balance; 
     /* margin: 10px auto; */
@@ -71,10 +70,10 @@ hr {
 
 /* Responsive image that doesn’t blow up */
 .row-image {
-    display: grid;               /* lets us use place-self */
-    justify-self: end;  /* center horizontally in grid cell */
-    align-self: start;    /* center vertically in grid cell */
-    width: 100%;
+  display: block;
+  justify-self: center;  /* center image horizontally in grid cell */
+  align-self: center;    /* center vertically in grid cell */
+  width: 100%;
 }
 
 .row-image img {
@@ -85,13 +84,22 @@ hr {
   }
   
   /* Stack on small screens (text above image) */
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     .row-wrapper {
-      grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
+  align-items: stretch; /* let stacked items use natural height */
     }
 
     .row-text h1{
       text-align: left;
+    }
+    /* Ensure text stacks above image on narrow screens */
+    .row-text {
+      grid-row: 1;
+    }
+    .row-image {
+      grid-row: 2;
+      
     }
     .row-image img {
       place-self: start center;  /* center image when stacked */
