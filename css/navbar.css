@@ -58,7 +58,7 @@
     display: block; /* Make link clickable across its whole area */
     color: black; /* Link text color */
     text-align: center; /* Center link text */
-    padding: 0px 16px; /* Add spacing inside links */
+    padding: 0px 17px; /* Add spacing inside links */
     text-decoration: none; /* Remove underline */
     font-size: 17px; /* Set link font size */
   }
@@ -84,7 +84,7 @@
   }
   
   .dropdown .dropbtn {
-    font-size: 16px; /* Trigger text size */
+    font-size: 17px; /* Trigger text size */
     border: none; /* Remove border */
     outline: none; /* Remove outline */
     color: black; /* Trigger text color */
@@ -129,7 +129,7 @@
     transform: translateX(-50%); /* Center horizontally */
     min-width: 160px; /* Minimum width */
     background: white; /* Menu background */
-    box-shadow: 0 8px 16px rgba(0,0,0,.2); /* Shadow for depth */
+    box-shadow: 0 8px 17px rgba(0,0,0,.2); /* Shadow for depth */
     z-index: 10000; /* Keep above other content */
   }
   
@@ -137,7 +137,7 @@
   .dropdown-content a {
     float: none; /* Reset float */
     color: black; /* Link color */
-    padding: 0px 16px; /* Spacing for menu items */
+    padding: 0px 17px; /* Spacing for menu items */
     text-decoration: none; /* No underline */
     display: block; /* Full width clickable */
     text-align: center; /* Center text in menu */
@@ -208,7 +208,7 @@
       .navbar.responsive .nav-right > .dropdown {
         display: block;
         text-align: center;
-        /* padding: 14px 16px; */
+        /* padding: 14px 17px; */
       }
     
       /* Make dropdown act like an accordion section */
@@ -257,7 +257,7 @@
     
       /* Sub-links look like a simple list */
       .navbar.responsive .dropdown-content a {
-        /* padding: 10px 16px; Menu item padding */
+        /* padding: 10px 17px; Menu item padding */
         text-align: center; /* Center submenu text */
       }
     }
