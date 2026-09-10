@@ -23,13 +23,14 @@ hr {
     justify-items: center;
 }
 
-.pet-row { 
-    display: grid; 
-    grid-template-columns: 1fr auto;
-    gap: 5rem;
+.pet-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 300px));
+    gap: 3rem 5rem;
     justify-content: center;
     justify-self: center;
     margin: 0 auto;
+    width: 100%;
 }
 
 /* Name of Pet */
@@ -55,13 +56,14 @@ hr {
     gap: 0.5rem;
 }
 
-.pair-img-txt img{
+.pair-img-txt img {
     width: 100%;
     max-width: 300px;
+    aspect-ratio: 4 / 5;
     height: auto;
     margin: 0 0 .25rem 0; /* small gap below image */
     align-self: stretch;
-    /* height: 250px; */
+    object-fit: cover;
 }
 
 /* ensure custom tags behave like blocks and left-align */
