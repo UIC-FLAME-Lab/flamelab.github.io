@@ -7,19 +7,31 @@ a:hover {
     color: #ADD8E6; /* slightly lighter orange */
 }
 
+html, body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 /* Global HR Style */
 hr {
-    width: 100%;          /* Default to 90% of container width */
-    height: clamp(3px, 0.5vw, 10px); /* Responsive height */
-    border: none;        /* Remove default border */
+    width: 100%;
+    height: clamp(3px, 0.5vw, 10px);
+    border: none;
 }
 
 .pet-wrapper {
-    display:grid;
+    display: grid;
     grid-template-columns: 1fr;
-    width: 90vw;
+    width: min(100%, 1100px);
     gap: 2rem;
-    padding-inline: clamp(12px,4vw,32px);
+    margin: 0 auto;
+    padding-inline: clamp(1rem, 4vw, 2rem);
     justify-items: center;
 }
 
@@ -28,24 +40,28 @@ hr {
     grid-template-columns: repeat(2, minmax(220px, 300px));
     gap: 3rem 5rem;
     justify-content: center;
-    justify-self: center;
-    margin: 0 auto;
+    justify-items: center;
     width: 100%;
+    margin: 0 auto;
 }
 
 /* Name of Pet */
-.pet-row name{ 
+.pet-row name {
+    display: block;
+    width: 100%;
     margin: 0 0 .75rem;
-    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: bold;
     text-align: left;
-    /* margin:0 auto */
 }
 
 /* Summary Text Under Pets */
-.pet-row txt{ 
+.pet-row txt {
+    display: block;
+    width: 100%;
     margin: 0 0 .75rem;
-    font-size: clamp(.5rem, 2vw, 1rem);
+    font-size: 1rem;
+    line-height: 1.4;
     text-align: left;
 }
 
@@ -54,31 +70,18 @@ hr {
     flex-direction: column; /* image above text */
     align-items: flex-start; /* left-align image and text */
     gap: 0.5rem;
+    width: 100%;
+    max-width: 300px; /* match image max-width */
 }
 
 .pair-img-txt img {
+    display: block;
     width: 100%;
     max-width: 300px;
     aspect-ratio: 4 / 5;
     height: auto;
     margin: 0 0 .25rem 0; /* small gap below image */
-    align-self: stretch;
     object-fit: cover;
-}
-
-/* ensure custom tags behave like blocks and left-align */
-.pair-img-txt name,
-.pair-img-txt txt {
-    display: block;
-    text-align: left;
-    width: 100%;
-}
-
-/* Constrain the pair container to the image width and enable wrapping */
-.pair-img-txt {
-    box-sizing: border-box;
-    max-width: 300px; /* match image max-width */
-    width: 100%;
 }
 
 .pair-img-txt name,
@@ -88,8 +91,30 @@ hr {
     word-break: break-word;
 }
 
-@media(max-width:900px){
-    .pet-row{
+@media(max-width: 700px) {
+    .pet-wrapper {
+        width: 100%;
+        gap: 1.75rem;
+        padding-inline: 1rem;
+    }
+
+    .pet-row {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .pair-img-txt {
+        align-items: center;
+        max-width: min(100%, 320px);
+    }
+
+    .pair-img-txt img {
+        width: min(100%, 280px);
+        margin-inline: auto;
+    }
+
+    .pet-row name,
+    .pet-row txt {
+        text-align: center;
     }
 }
