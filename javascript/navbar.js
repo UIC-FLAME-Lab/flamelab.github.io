@@ -1,5 +1,7 @@
 function toggleMenu() {
   const nav = document.getElementById("mynavbar");
+  if (!nav) return;
+
   const willOpen = !nav.classList.contains("responsive");
 
   nav.classList.toggle("responsive", willOpen);
@@ -14,7 +16,7 @@ function toggleMenu() {
 // Accordion behavior for mobile dropdowns
 document.addEventListener("click", function (e) {
   const nav = document.getElementById("mynavbar");
-  if (!nav.classList.contains("responsive")) return; // only in overlay mode
+  if (!nav || !nav.classList.contains("responsive")) return; // only in overlay mode
 
   const btn = e.target.closest(".dropbtn");
   if (btn && nav.contains(btn)) {
@@ -27,39 +29,36 @@ document.addEventListener("click", function (e) {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const nav = document.getElementById("mynavbar");
+  if (!nav) return;
 
-(function () {
-  const nav = document.getElementById('mynavbar');
-  const right = nav.querySelector('.nav-right');
+  const right = nav.querySelector(".nav-right");
+  if (!right) return;
 
-  let lastMode = null;
   let firstOverflowLogged = false;
 
   function setMenuMode() {
     // Is the right-side links area overflowing?
     const isOverflowing = right.scrollWidth > right.clientWidth;
 
-    // toggle compact mode (shows hamburger, hides links)
-    nav.classList.toggle('compact', isOverflowing);
+    // Toggle compact mode for pages that choose to style it
+    nav.classList.toggle("compact", isOverflowing);
 
-    // log the width the first time it overflows
+    // Log the width the first time it overflows
     if (isOverflowing && !firstOverflowLogged) {
-      console.log('Navbar starts cutting off at ~', window.innerWidth, 'px');
+      console.log("Navbar starts cutting off at ~", window.innerWidth, "px");
       firstOverflowLogged = true;
     }
 
-    // (optional) clear the log flag if it stops overflowing
     if (!isOverflowing) firstOverflowLogged = false;
-
-    lastMode = isOverflowing;
   }
 
-  // run on load and on resize (throttled)
-  window.addEventListener('load', setMenuMode);
-  window.addEventListener('resize', () => {
-    // simple throttle via rAF
-    if (lastMode === null) return setMenuMode();
+  window.addEventListener("load", setMenuMode);
+  window.addEventListener("resize", () => {
     cancelAnimationFrame(setMenuMode._raf);
     setMenuMode._raf = requestAnimationFrame(setMenuMode);
   });
-})();
+
+  setMenuMode();
+});

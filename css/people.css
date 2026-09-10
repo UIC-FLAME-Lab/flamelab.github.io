@@ -1,6 +1,6 @@
 a {
     text-decoration: none;
-    color: #FFAA33; 
+    color: #FFAA33;
 }
 
 /* Prevent horizontal overflow and ensure predictable sizing */
@@ -46,32 +46,29 @@ hr {
 }
 
 /* child wrappers */
-    .person{ 
+.person {
     display: grid;
-    grid-template-columns: auto 1fr; /* image left, content right */
-    grid-template-rows: auto; /* single auto row: image height will set row height */
+    grid-template-columns: minmax(220px, 360px) 1fr; /* image left, content right */
+    gap: 1.5rem;
     justify-items: start;
     justify-self: center;
     align-items: start; /* align columns to the top so name lines up with image */
-    align-content: start; /* ensure grid content starts at the top */
+    align-content: start;
     width: 100%;
     box-sizing: border-box; /* ensure padding doesn't increase width */
     padding-inline: clamp(1.25rem, 5vw, 4rem); /* slightly reduced left/right spacing so content uses more width */
-    /* max-width: 70ch;  */
 }
 
 /* Picture */
-.person img{
-    width: 100%;
-    max-width: 360px; /* increased image width */
+.person img {
+    width: min(100%, 360px);
     aspect-ratio: 1 / 1; /* force square crop */
-    width: 100%;
     height: auto;
     margin: 0;
     display: block; /* avoid inline-gap overflow */
     grid-column: 1;
-    grid-row: 1; /* occupy the first row */
-    align-self: start; /* ensure image aligns to top */
+    grid-row: 1;
+    align-self: start;
     object-fit: cover; /* crop to fill square */
 }
 
@@ -92,23 +89,17 @@ hr {
 
 .person-name {
     margin: 0 0 .5rem;
-        font-size: clamp(1rem, 3vw, 1.25rem);
-        font-weight: bold;
-        text-align: left;
-        justify-self: start;
-        margin: 0;
-        align-self: flex-start !important; /* force top alignment */
-        padding-top: 0 !important;
-        margin-top: 0 !important;
-        /* no grid placement here — name is inside .person-text */
-    }
-/*   
-  .person-bio {
-    margin: 0;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-weight: bold;
+    text-align: left;
+    align-self: flex-start !important; /* force top alignment */
+    padding-top: 0 !important;
+}
+
+.person-bio {
+    margin-top: 0;
     line-height: 1.5;
-    font-size: clamp(.75rem, 2vw, 1rem);
-    text-wrap: balance;
-  } */
+}
 
   /* main RA container */
     .ra-container {
@@ -183,33 +174,35 @@ hr {
 
 
     @media(max-width: 900px){
-        .person{ 
+        .person {
             grid-template-columns: 1fr;
-            grid-template-rows: auto auto auto;
+            gap: 0.75rem;
             justify-items: center;
             align-items: start;
             padding-inline: clamp(0.9rem, 8vw, 2rem); /* slightly reduced mobile side margins */
         }
 
-        .person img{
+        .person img {
             grid-column: 1;
             grid-row: 1;
-            max-width: min(360px, 85%); /* cap image size on narrow screens */
+            width: min(100%, 320px);
             margin-left: auto;
             margin-right: auto;
         }
 
-        .person-name{
+        .person-text {
             grid-column: 1;
             grid-row: 2;
-            text-align: center;
-        }
-
-        .person-text{
-            grid-column: 1;
-            grid-row: 3;
+            width: min(100%, 70ch);
             text-align: left;
             padding-inline: 0.5rem; /* reduce inner padding so text column remains tight */
+        }
+
+        .person-name {
+            width: 100%;
+            text-align: center;
+            align-self: center !important;
+            margin-bottom: 0.75rem;
         }
 
         .ra-container {
@@ -235,4 +228,10 @@ hr {
     margin-top: 0 !important;
     padding-top: 0 !important;
     align-self: flex-start !important;
+}
+
+@media(max-width: 900px) {
+    .person-text > .person-name {
+        align-self: center !important;
+    }
 }
