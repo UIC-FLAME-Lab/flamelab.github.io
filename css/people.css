@@ -153,6 +153,34 @@ hr {
         font-size: clamp(.75rem, 3vw, 1rem);
     }
 
+    .alumni-container {
+        width: 100%;
+        box-sizing: border-box;
+        padding-inline: clamp(1.25rem, 5vw, 4rem);
+    }
+
+    .alumni-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.75rem 2rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .alumni-list li {
+        font-size: clamp(.9rem, 2.4vw, 1rem);
+        line-height: 1.4;
+    }
+
+    .alumni-name {
+        font-weight: bold;
+    }
+
+    .alumni-role {
+        color: #444;
+    }
+
 
     @media(max-width: 900px){
         .person{ 
@@ -188,6 +216,10 @@ hr {
             width: 100%;
             padding-inline: clamp(0.9rem, 8vw, 2rem); /* slightly reduced mobile side margins */
             padding-block: 0;
+        }
+
+        .alumni-container {
+            padding-inline: clamp(0.9rem, 8vw, 2rem);
         }
     }
 
