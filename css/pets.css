@@ -84,6 +84,11 @@ hr {
     object-fit: cover;
 }
 
+.pair-img-txt:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
 .pair-img-txt name,
 .pair-img-txt txt {
     white-space: normal;
